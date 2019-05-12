@@ -406,7 +406,7 @@ void LandAndWavesApp::UpdateMainPassCB(const GameTimer& gt)
 	XMStoreFloat4x4(&mMainPassCB.InvViewProj, XMMatrixTranspose(invViewProj));
 	mMainPassCB.EyePosW = mEyePos;
 	mMainPassCB.RenderTargetSize = XMFLOAT2((float)mClientWidth, (float)mClientHeight);
-	mMainPassCB.InvRenderTargetSize = XMFLOAT2(1.0f / mClientWidth, 1.0f / mClientHeight);
+	mMainPassCB.InvRenderTargetSize = XMFLOAT2(1.0f / (float)mClientWidth, 1.0f / (float)mClientHeight);
 	mMainPassCB.NearZ = 1.0f;
 	mMainPassCB.FarZ = 1000.0f;
 	mMainPassCB.TotalTime = gt.TotalTime();
@@ -442,7 +442,7 @@ void LandAndWavesApp::UpdateWaves(const GameTimer& gt)
 		Vertex v;
 
 		v.Pos = mWaves->Position(i);
-        v.Color = XMFLOAT4(DirectX::Colors::Blue);
+        v.Color = XMFLOAT4(Colors::Blue);
 
 		currWavesVB->CopyData(i, v);
 	}
